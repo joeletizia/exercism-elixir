@@ -10,8 +10,7 @@ defmodule School do
   """
   @spec add(map, String.t, integer) :: map
   def add(db, name, grade) do
-    current_grade = Map.get(db, grade, [])
-    Map.put(db, grade, [name|current_grade])
+    Map.update(db, grade, [name], &([name|&1]))
   end
 
   @doc """
